@@ -85,6 +85,17 @@
       '</button>';
     }
 
+    // External links
+    btns += '<div class="sidebar-separator"></div>';
+    btns += '<a class="sidebar-btn sidebar-ext-link" href="https://www.airbnb.com/l/VdVJsFol?s=67&unique_share_id=64b00cf0-710d-4615-8aed-1beb166af761" target="_blank" rel="noopener">' +
+      '<span class="sidebar-icon">\uD83C\uDFE0</span>' +
+      '<span class="sidebar-label">Airbnb</span>' +
+    '</a>';
+    btns += '<a class="sidebar-btn sidebar-ext-link" href="https://spliit.app/groups/Og_9r-gyrOocsXQtNb76Q/expenses?ref=share" target="_blank" rel="noopener">' +
+      '<span class="sidebar-icon">\uD83D\uDCB0</span>' +
+      '<span class="sidebar-label">Splits</span>' +
+    '</a>';
+
     // Show arrow toggle only when expanded on desktop
     var showToggle = !App.state.isMobileView && !collapsed;
     var toggleHtml = showToggle

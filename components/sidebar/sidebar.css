@@ -160,6 +160,11 @@
   width: 0;
 }
 
+/* External link buttons */
+a.sidebar-ext-link {
+  text-decoration: none;
+}
+
 /* Separator before Wishlists */
 .sidebar-separator {
   height: 1px;
