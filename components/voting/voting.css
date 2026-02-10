@@ -1,0 +1,42 @@
+/* Voting button — always visible, bottom-right of card */
+.vote-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+  line-height: 1;
+  z-index: 1;
+}
+
+.vote-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.vote-btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+.vote-btn.voted {
+  border-color: currentColor;
+  font-weight: 600;
+}
+
+.vote-btn.voted svg {
+  fill: currentColor;
+}
+
+.vote-count {
+  font-variant-numeric: tabular-nums;
+}

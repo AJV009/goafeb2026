@@ -1,0 +1,29 @@
+add a do not index OR do not be searched OR not to be scrapped and such metas and flags, research online for all possible ways to precvetn the site being indexed anywhere...
+
+---
+
+integrate jsonbin as done in oracle11 repo (check the deployment method and how we are using json bin here /home/alphons/project/_OLD_/oracle11) (use the jsonbin creds from that repo,just use a different bin, create one using the jsonbin api and stuff and use that bin for our app, we will be using the same methods to read and write data to the bin as we are doing in the oracle11 repo, just with a different bin id and stuff)
+personal wishlist options, where users can just create there OWN lists and add places and stuff to it. (Will need to use a make changes and click save functionality and auto save on sometime and last saved timer) created on, created by, last updated and so on, list name, descriptions. NO owner name because we wont be having a owner thing...
+there will no user logins and stuff, BUT a way to create lists, see existing lists and such and search in the lists and so on.. maybe to make it look flush treat lists like a category, people can create lists there and then in the other actually categories there will be a add to list dropdown that they can use...
+Add a feature to share lists with friends, where users can generate a unique link to that can just be shared... (it could be a query param to a jsonbin variable that has the list data...)
+
+---
+
+add a voting option (unique user to current browser, we will store a forever browser value that can be used as a unique identifier for the user and allow them to vote on places and stuff, we will also show the total votes for each place and sort the lists based on votes as well (not by default but will have that option there)) (vote will trigger a jsonbin call in js...)
+
+---
+
+add a feature to add notes to each place so that my other collegues and users can add their own notes and suggestions and stuff.
+
+---
+
+Research all the places in the list and add ideal time that would be spend there... will be shown in the cards and all
+Add a feature to sort the lists based on different criteria like distance, popularity, ratings, etc. (this would require us to have some sort of data for these criteria, you will need to research about each and every place in our existing list and add these data points and work out the filters and sorting stuff for the app)
+
+---
+
+transform everything into a json and store it away into jsonbin, add ability to add places and stuff in every category. 
+
+---
+
+checklist option on the top left corner of every card, checking will dim the card, indicating that wee have already visited it OR its a no go. EVEN if its dim, all the icons and stuff on it should be working, in case someone wants to add more notes to it or wants to add it to some list and so on

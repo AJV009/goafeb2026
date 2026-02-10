@@ -1,0 +1,25 @@
+/* ============================================
+   Footer Component
+   ============================================ */
+
+.footer {
+  text-align: center;
+  padding: 36px 20px 48px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.footer-palm {
+  font-size: 24px;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+.footer-stats {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 4px;
+}

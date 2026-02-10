@@ -1,0 +1,290 @@
+/* ============================================
+   Lists Component
+   ============================================ */
+
+/* Lists overview grid */
+.lists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.list-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: cardReveal 0.4s ease backwards;
+}
+
+.list-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.list-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, var(--jungle), var(--jungle-light));
+}
+
+.list-card-body {
+  padding: 18px 20px 16px;
+}
+
+.list-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.list-card-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+
+.list-card-count {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: var(--sand);
+  color: var(--text-secondary);
+}
+
+.list-card-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.list-card-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.list-card > .list-delete-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+}
+
+/* List detail view */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--jungle);
+  color: var(--white);
+  border-color: var(--jungle);
+}
+
+.list-detail-header {
+  margin-bottom: 20px;
+}
+
+.editable-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.edit-hint {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  max-width: 14px;
+  max-height: 14px;
+  overflow: hidden;
+  color: var(--text-muted);
+  opacity: 0.45;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.edit-hint svg {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+.editable-field:focus-within .edit-hint {
+  opacity: 0;
+}
+
+.list-name-input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--charcoal);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  outline: none;
+  padding: 4px 24px 4px 0;
+  margin-bottom: 4px;
+  transition: border-color 0.2s;
+  letter-spacing: -0.5px;
+}
+
+.list-name-input:focus {
+  border-bottom-color: var(--jungle-light);
+}
+
+.list-desc-input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  outline: none;
+  padding: 4px 24px 4px 0;
+  margin-bottom: 8px;
+  resize: none;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.list-desc-input:focus {
+  border-bottom-color: var(--border);
+}
+
+.list-detail-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.save-indicator {
+  font-weight: 600;
+}
+
+.list-detail-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.save-btn:not(:disabled) {
+  background: var(--jungle);
+  color: var(--white);
+  border-color: var(--jungle);
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Category badge on list cards */
+.list-cat-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Add-to-list dropdown */
+.add-to-list-wrap {
+  position: relative;
+}
+
+.add-to-list-dropdown {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 6px;
+  min-width: 200px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  overflow: hidden;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.add-to-list-option {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.add-to-list-option:hover {
+  background: var(--sand);
+}
+
+.add-to-list-option.new-list-option {
+  border-top: 1px solid var(--border-light);
+  font-weight: 600;
+  color: var(--jungle);
+}
+
+/* Lists responsive */
+@media (max-width: 768px) {
+  .lists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-name-input {
+    font-size: 22px;
+  }
+
+  .list-detail-actions {
+    flex-wrap: wrap;
+  }
+}
