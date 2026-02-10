@@ -20,10 +20,13 @@ add a feature to add notes to each place so that my other collegues and users ca
 Research all the places in the list and add ideal time that would be spend there... will be shown in the cards and all
 Add a feature to sort the lists based on different criteria like distance, popularity, ratings, etc. (this would require us to have some sort of data for these criteria, you will need to research about each and every place in our existing list and add these data points and work out the filters and sorting stuff for the app)
 
+since this is a time consuming research task I need you to spin up sonnet level as many agents as you need for the information gathering. And well feel free to add a few more places and items to all the lists so that we have a good amount of data to work with for the sorting and filtering and all that stuff. And hey trip folks shouldn't miss any hidden gems, look for hidden gems of every category, look deep into the web for special things in goa
+
 ---
 
 transform everything into a json and store it away into jsonbin, add ability to add places and stuff in every category. 
 
 ---
 
-checklist option on the top left corner of every card, checking will dim the card, indicating that wee have already visited it OR its a no go. EVEN if its dim, all the icons and stuff on it should be working, in case someone wants to add more notes to it or wants to add it to some list and so on
+checklist option on the top left corner of every card, checking will dim the card, indicating that wee have already visited it OR its a no go. EVEN if its dim, all the icons and stuff on it should be working, in case someone wants to add more notes to it or wants to add it to some list and so on.
+data to be synced to jsonbin... the same way we are dealing with lists, votes and notes...

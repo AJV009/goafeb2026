@@ -34,13 +34,13 @@ jobs:
 
       - name: Inject secrets into config
         run: |
-          cat > config.js << EOF
+          cat > config.js << 'ENDOFCONFIG'
           const CONFIG = {
             JSONBIN_API_KEY: '${{ secrets.JSONBIN_API_KEY }}',
             JSONBIN_BIN_ID: '${{ secrets.JSONBIN_BIN_ID }}',
           };
           Object.freeze(CONFIG);
-          EOF
+          ENDOFCONFIG
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
