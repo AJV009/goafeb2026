@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Sand background circle -->
+  <circle cx="256" cy="256" r="256" fill="#F7F3EC"/>
+  <!-- Gold sun -->
+  <circle cx="340" cy="140" r="50" fill="#D4943A" opacity="0.85"/>
+  <!-- Palm trunk -->
+  <path d="M230 420 Q240 320 260 220" stroke="#1B3A2D" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <!-- Palm fronds -->
+  <path d="M258 225 Q310 160 380 150" stroke="#1B3A2D" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M255 220 Q220 140 260 100" stroke="#1B3A2D" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M252 230 Q180 170 130 175" stroke="#1B3A2D" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M260 218 Q330 190 370 210" stroke="#1B3A2D" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M250 225 Q190 210 150 240" stroke="#1B3A2D" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <!-- Coconuts -->
+  <circle cx="250" cy="218" r="10" fill="#1B3A2D"/>
+  <circle cx="265" cy="224" r="9" fill="#1B3A2D"/>
+  <circle cx="248" cy="232" r="9" fill="#1B3A2D"/>
+</svg>

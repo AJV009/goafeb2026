@@ -1,0 +1,50 @@
+{
+  "name": "The Complete Goa Guide",
+  "short_name": "Goa Guide",
+  "description": "Every beach, church, bar, dive site, waterfall, and hidden gem in Goa.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1B3A2D",
+  "background_color": "#F7F3EC",
+  "categories": ["travel", "lifestyle"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search Places",
+      "short_name": "Search",
+      "url": "./index.html"
+    },
+    {
+      "name": "My Wishlists",
+      "short_name": "Wishlists",
+      "url": "./index.html?view=lists"
+    }
+  ]
+}

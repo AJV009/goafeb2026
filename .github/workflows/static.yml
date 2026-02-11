@@ -42,6 +42,19 @@ jobs:
           Object.freeze(CONFIG);
           ENDOFCONFIG
 
+      - name: Generate PWA icons from SVG
+        run: |
+          sudo apt-get update && sudo apt-get install -y librsvg2-bin
+          mkdir -p icons
+          rsvg-convert icons/icon.svg -w 192 -h 192 -o icons/icon-192.png
+          rsvg-convert icons/icon.svg -w 512 -h 512 -o icons/icon-512.png
+          rsvg-convert icons/icon.svg -w 180 -h 180 -o icons/apple-touch-icon-180.png
+
+      - name: Inject version into service worker
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          sed -i "s/__SW_VERSION__/$HASH/g" service-worker.js
+
       - name: Cache-bust CSS and JS references
         run: |
           HASH=$(git rev-parse --short HEAD)

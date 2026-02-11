@@ -47,6 +47,10 @@
 
     async saveLists(listsData, retries) {
       if (!hasConfig()) return false;
+      if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+        App.PWA.queueSync('lists');
+        return true;
+      }
       retries = retries || 2;
 
       for (var attempt = 0; attempt <= retries; attempt++) {
@@ -71,6 +75,10 @@
         } catch (error) {
           if (attempt === retries) {
             console.error('API save error:', error);
+            if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+              App.PWA.queueSync('lists');
+              return true;
+            }
             return false;
           }
           await new Promise(function (r) {
@@ -83,6 +91,10 @@
 
     async saveVotes(votesData, retries) {
       if (!hasConfig()) return false;
+      if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+        App.PWA.queueSync('votes');
+        return true;
+      }
       retries = retries || 2;
 
       for (var attempt = 0; attempt <= retries; attempt++) {
@@ -106,6 +118,10 @@
         } catch (error) {
           if (attempt === retries) {
             console.error('API save votes error:', error);
+            if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+              App.PWA.queueSync('votes');
+              return true;
+            }
             return false;
           }
           await new Promise(function (r) {
@@ -118,6 +134,10 @@
 
     async saveChecked(checkedData, retries) {
       if (!hasConfig()) return false;
+      if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+        App.PWA.queueSync('checked');
+        return true;
+      }
       retries = retries || 2;
 
       for (var attempt = 0; attempt <= retries; attempt++) {
@@ -141,6 +161,10 @@
         } catch (error) {
           if (attempt === retries) {
             console.error('API save checked error:', error);
+            if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+              App.PWA.queueSync('checked');
+              return true;
+            }
             return false;
           }
           await new Promise(function (r) {
@@ -153,6 +177,10 @@
 
     async saveNotes(notesData, retries) {
       if (!hasConfig()) return false;
+      if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+        App.PWA.queueSync('notes');
+        return true;
+      }
       retries = retries || 2;
 
       for (var attempt = 0; attempt <= retries; attempt++) {
@@ -176,6 +204,10 @@
         } catch (error) {
           if (attempt === retries) {
             console.error('API save notes error:', error);
+            if (!navigator.onLine && App.PWA && App.PWA.queueSync) {
+              App.PWA.queueSync('notes');
+              return true;
+            }
             return false;
           }
           await new Promise(function (r) {
