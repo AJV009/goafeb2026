@@ -50,7 +50,7 @@
             '<div class="list-card-body">' +
               '<div class="list-card-top">' +
                 '<span class="list-card-name">' + escHtml(l.name) + '</span>' +
-                '<span class="list-card-count">' + count + ' ' + (count === 1 ? 'place' : 'places') + '</span>' +
+                '<span class="list-card-count">' + count + ' ' + (count === 1 ? 'item' : 'items') + '</span>' +
               '</div>' +
               (l.description ? '<div class="list-card-desc">' + escHtml(l.description) + '</div>' : '') +
               '<div class="list-card-meta">Created ' + App.relativeTime(l.createdAt) + ' \u00B7 Updated ' + App.relativeTime(l.lastUpdated) + '</div>' +
