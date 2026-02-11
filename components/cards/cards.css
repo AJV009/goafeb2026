@@ -25,7 +25,9 @@
 
 .card-accent {
   height: 4px;
-  width: 100%;
+  width: calc(100% - 4px);
+  margin: 0 auto;
+  border-radius: 13px 13px 0 0;
 }
 
 .card-body {

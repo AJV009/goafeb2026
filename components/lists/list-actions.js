@@ -184,6 +184,7 @@
     // Reuse browse-view event bindings for card actions
     if (App.bindVoteEvents) App.bindVoteEvents(contentEl);
     if (App.bindNoteEvents) App.bindNoteEvents(contentEl);
+    if (App.bindCustomCardEvents) App.bindCustomCardEvents(contentEl);
 
     contentEl.querySelectorAll('.copy-gps-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

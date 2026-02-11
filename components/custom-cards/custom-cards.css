@@ -1,0 +1,170 @@
+/* ============================================
+   Custom Cards Component
+   ============================================ */
+
+/* Custom card visual distinction */
+.card-custom {
+  border: 1px dashed #9CA3AF;
+}
+
+.card-custom .card-accent {
+  background: linear-gradient(90deg, #9CA3AF, #9CA3AF66) !important;
+}
+
+/* "Add Custom Place" button */
+.add-custom-btn {
+  border: 2px dashed var(--border);
+  background: var(--white);
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.add-custom-btn:hover {
+  border-color: #9CA3AF;
+  color: var(--charcoal);
+  background: var(--sand);
+}
+
+/* Inline form */
+.custom-card-form {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  padding: 20px;
+  margin-bottom: 20px;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.custom-form-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 14px;
+}
+
+.custom-form-input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.custom-form-input:focus {
+  border-color: #9CA3AF;
+}
+
+.custom-form-textarea {
+  resize: vertical;
+  min-height: 48px;
+  line-height: 1.5;
+}
+
+.custom-form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.custom-form-cancel {
+  background: var(--sand);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.custom-form-cancel:hover {
+  background: var(--sand-dark);
+}
+
+.custom-form-add {
+  background: #9CA3AF;
+  color: var(--white);
+  border-color: #9CA3AF;
+  font-weight: 600;
+}
+
+.custom-form-add:not(:disabled):hover {
+  background: #6B7280;
+  border-color: #6B7280;
+}
+
+.custom-form-add:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Edit modal overlay */
+.custom-edit-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.custom-edit-panel {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 460px;
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+.custom-edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.custom-edit-header h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.custom-edit-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.custom-edit-close:hover {
+  background: var(--sand);
+  color: var(--charcoal);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-edit-panel {
+    width: 95%;
+    padding: 18px;
+  }
+}

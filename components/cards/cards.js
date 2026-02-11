@@ -22,6 +22,8 @@
 
   App.renderCard = function (item, index, catColor, catKey, opts) {
     opts = opts || {};
+    var itemKey = opts.itemKey || item.name;
+    var customClass = opts.customCard ? ' card-custom' : '';
     var cardId = catKey + '-' + index;
     var hasLocation = item.lat && item.lng;
     var delay = Math.min(index * 0.04, 0.6);
@@ -41,10 +43,10 @@
     if (opts.extraActionsHtml) actionsHtml += opts.extraActionsHtml;
     actionsHtml += '</div>';
 
-    var voteHtml = App.buildVoteBtn ? App.buildVoteBtn(catKey, item.name, catColor) : '';
-    var noteHtml = App.buildNoteBtn ? App.buildNoteBtn(catKey, item.name, catColor) : '';
-    var checkHtml = App.buildCheckBtn ? App.buildCheckBtn(catKey, item.name) : '';
-    var checkedClass = App.hasUserChecked && App.hasUserChecked(catKey, item.name) ? ' card-checked' : '';
+    var voteHtml = App.buildVoteBtn ? App.buildVoteBtn(catKey, itemKey, catColor) : '';
+    var noteHtml = App.buildNoteBtn ? App.buildNoteBtn(catKey, itemKey, catColor) : '';
+    var checkHtml = App.buildCheckBtn ? App.buildCheckBtn(catKey, itemKey) : '';
+    var checkedClass = App.hasUserChecked && App.hasUserChecked(catKey, itemKey) ? ' card-checked' : '';
 
     var whereHtml = item.where
       ? '<div class="card-where">Try at: ' + item.where + '</div>'
@@ -86,7 +88,7 @@
 
     var badgeHtml = opts.badgeHtml || (item.area ? '<span class="card-area">' + item.area + '</span>' : '');
 
-    return '<div class="card' + checkedClass + '" data-card-id="' + cardId + '" style="animation-delay: ' + delay + 's">' +
+    return '<div class="card' + checkedClass + customClass + '" data-card-id="' + cardId + '" style="animation-delay: ' + delay + 's">' +
       checkHtml +
       '<div class="card-accent" style="background: linear-gradient(90deg, ' + catColor + ', ' + catColor + '66)"></div>' +
       '<div class="card-body">' +

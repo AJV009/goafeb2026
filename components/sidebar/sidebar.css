@@ -299,8 +299,11 @@ a.sidebar-ext-link {
   }
 
   .section-header .section-divider {
-    flex: 1 1 100%;
+    flex: 0 0 auto;
+    width: 32%;
+    margin-top: -8px;
     margin-bottom: 4px;
+    align-self: center;
   }
 
   .section-count {

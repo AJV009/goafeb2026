@@ -13,6 +13,9 @@
     if (!list || !list.items) return [];
     return list.items
       .map(function (ref) {
+        if (ref.custom) {
+          return { item: ref, cat: '_custom', color: '#9CA3AF', icon: '\uD83D\uDCCC', title: 'Custom', isCustom: true };
+        }
         var cat = GOA_DATA[ref.cat];
         if (!cat) return null;
         var item = cat.items.find(function (i) { return i.name === ref.name; });
@@ -91,10 +94,10 @@
 
     var cardsHtml = resolved.length === 0
       ? '<div class="empty-state"><div class="empty-state-icon">\uD83C\uDF34</div><div class="empty-state-text">' +
-        (list.items.length === 0 ? 'This list is empty \u2014 browse categories and add places!' : 'No matches in this list.') +
+        (list.items.length === 0 ? 'This list is empty \u2014 browse categories and add places, or add a custom one!' : 'No matches in this list.') +
         '</div></div>'
       : '<div class="card-grid">' + resolved.map(function (r, idx) {
-          return App.renderListCard(r.item, idx, r.color, r.cat, r.icon, r.title);
+          return App.renderListCard(r.item, idx, r.color, r.cat, r.icon, r.title, r.isCustom);
         }).join('') + '</div>';
 
     App.$('#content').innerHTML =
@@ -114,7 +117,9 @@
         '</div>' +
         '<div class="list-detail-actions">' +
           '<button class="action-btn save-btn" id="save-now-btn"' + (App.state.listsDirty ? '' : ' disabled') + '>\uD83D\uDCBE Save Now</button>' +
+          '<button class="action-btn add-custom-btn" id="add-custom-btn">\uD83D\uDCCC Add Custom Place</button>' +
         '</div>' +
+        '<div id="custom-card-form-area"></div>' +
       '</div>' +
       (list.items.length > 0 ? '<div class="filters"><input class="search-box" type="text" placeholder="Search in list..." value="' + App.state.searchQuery + '" id="search-input" /></div>' : '') +
       cardsHtml;
@@ -125,15 +130,32 @@
 
   // ── Render: List card (reuses App.renderCard with list-specific overrides) ──
 
-  App.renderListCard = function (item, index, catColor, catKey, catIcon, catTitle) {
+  App.renderListCard = function (item, index, catColor, catKey, catIcon, catTitle, isCustom) {
     var badgeHtml = '<span class="card-area list-cat-badge" style="background:' + catColor + '15;color:' + catColor + '">' + catIcon + ' ' + catTitle + '</span>';
     var removeBtn = '<button class="action-icon remove-from-list-btn" data-index="' + index + '" onclick="event.stopPropagation()" title="Remove">' + App.ICONS.trash + '</button>';
 
-    return App.renderCard(item, index, catColor, catKey, {
+    var opts = {
       badgeHtml: badgeHtml,
       extraActionsHtml: removeBtn,
       skipAddToList: true,
-    });
+    };
+
+    if (isCustom) {
+      var editBtn = '<button class="action-icon edit-custom-btn" data-index="' + index + '" onclick="event.stopPropagation()" title="Edit">' + App.ICONS.pen + '</button>';
+      opts.extraActionsHtml = editBtn + removeBtn;
+      opts.itemKey = item.id;
+      opts.customCard = true;
+      // Escape user-generated content for XSS prevention
+      var safeItem = {
+        name: escHtml(item.name),
+        desc: item.desc ? escHtml(item.desc) : '',
+        tags: item.tags ? item.tags.map(escHtml) : [],
+        area: '',
+      };
+      return App.renderCard(safeItem, index, catColor, catKey, opts);
+    }
+
+    return App.renderCard(item, index, catColor, catKey, opts);
   };
 
 })(GoaApp);
