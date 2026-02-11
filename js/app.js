@@ -51,6 +51,8 @@
         '<span class="sort-divider"></span>' +
         '<button class="sort-btn' + (App.state.sortBy === 'default' ? ' active' : '') + '" data-sort="default">Default</button>' +
         '<button class="sort-btn' + (App.state.sortBy === 'votes' ? ' active' : '') + '" data-sort="votes">Top Voted</button>' +
+        '<button class="sort-btn' + (App.state.sortBy === 'rating' ? ' active' : '') + '" data-sort="rating">\u2605 Rating</button>' +
+        '<button class="sort-btn' + (App.state.sortBy === 'popularity' ? ' active' : '') + '" data-sort="popularity">\uD83D\uDD25 Popular</button>' +
       '</div>' +
       cardsHtml;
 

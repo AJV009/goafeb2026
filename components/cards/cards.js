@@ -50,6 +50,30 @@
       ? '<div class="card-where">Try at: ' + item.where + '</div>'
       : '';
 
+    // Meta row: rating, popularity, time, bestTime
+    var metaHtml = '';
+    var metaParts = [];
+    if (item.rating) {
+      var fullStars = Math.floor(item.rating);
+      var halfStar = item.rating % 1 >= 0.3;
+      var stars = '\u2605'.repeat(fullStars) + (halfStar ? '\u00BD' : '');
+      metaParts.push('<span class="card-meta-rating" title="Rating: ' + item.rating + '/5">' + stars + ' ' + item.rating + '</span>');
+    }
+    if (item.popularity) {
+      var popClass = 'pop-' + item.popularity;
+      metaParts.push('<span class="card-meta-pop ' + popClass + '">' + item.popularity + '</span>');
+    }
+    if (item.timeToSpend) {
+      metaParts.push('<span class="card-meta-time" title="Time to spend">\u23F1 ' + item.timeToSpend + '</span>');
+    }
+    if (metaParts.length) {
+      metaHtml = '<div class="card-meta">' + metaParts.join('<span class="card-meta-dot">\u00B7</span>') + '</div>';
+    }
+
+    var bestTimeHtml = item.bestTime
+      ? '<div class="card-best-time" title="Best time to visit">\uD83D\uDCC5 ' + item.bestTime + '</div>'
+      : '';
+
     var tagsHtml = (item.tags || [])
       .map(function (t) { return '<span class="tag" style="background:' + tagBg + ';color:' + catColor + '">' + t + '</span>'; })
       .join('');
@@ -71,6 +95,8 @@
           badgeHtml +
         '</div>' +
         '<div class="card-desc">' + item.desc + '</div>' +
+        metaHtml +
+        bestTimeHtml +
         whereHtml +
         '<div class="card-tags">' + tagsHtml + '</div>' +
         priceHtml +

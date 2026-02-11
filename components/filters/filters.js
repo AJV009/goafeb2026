@@ -29,11 +29,20 @@
       });
     }
 
-    if (App.state.sortBy === 'votes') {
-      var catKey = App.state.activeCategory;
-      items = items.slice().sort(function (a, b) {
-        return (App.getVoteCount(catKey, b.name) || 0) - (App.getVoteCount(catKey, a.name) || 0);
-      });
+    var sortBy = App.state.sortBy;
+    if (sortBy && sortBy !== 'default') {
+      items = items.slice();
+      if (sortBy === 'votes') {
+        var catKey = App.state.activeCategory;
+        items.sort(function (a, b) {
+          return (App.getVoteCount(catKey, b.name) || 0) - (App.getVoteCount(catKey, a.name) || 0);
+        });
+      } else if (sortBy === 'rating') {
+        items.sort(function (a, b) { return (b.rating || 0) - (a.rating || 0); });
+      } else if (sortBy === 'popularity') {
+        var popOrder = { high: 3, medium: 2, low: 1 };
+        items.sort(function (a, b) { return (popOrder[b.popularity] || 0) - (popOrder[a.popularity] || 0); });
+      }
     }
 
     return items;
