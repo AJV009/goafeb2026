@@ -61,7 +61,7 @@
     }
     if (item.popularity) {
       var popClass = 'pop-' + item.popularity;
-      metaParts.push('<span class="card-meta-pop ' + popClass + '">' + item.popularity + '</span>');
+      metaParts.push('<span class="card-meta-pop ' + popClass + '" title="Popularity among tourists">' + item.popularity + '</span>');
     }
     if (item.timeToSpend) {
       metaParts.push('<span class="card-meta-time" title="Time to spend">\u23F1 ' + item.timeToSpend + '</span>');
