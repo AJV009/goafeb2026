@@ -137,7 +137,7 @@
     document.addEventListener('touchstart', function (e) {
       if (!App.state.isMobileView || mobileExpanded) return;
       var touch = e.touches[0];
-      if (touch.clientX < 30) {
+      if (touch.clientX < window.innerWidth * 0.45) {
         startX = touch.clientX;
         startY = touch.clientY;
         tracking = true;
