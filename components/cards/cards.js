@@ -43,6 +43,8 @@
 
     var voteHtml = App.buildVoteBtn ? App.buildVoteBtn(catKey, item.name, catColor) : '';
     var noteHtml = App.buildNoteBtn ? App.buildNoteBtn(catKey, item.name, catColor) : '';
+    var checkHtml = App.buildCheckBtn ? App.buildCheckBtn(catKey, item.name) : '';
+    var checkedClass = App.hasUserChecked && App.hasUserChecked(catKey, item.name) ? ' card-checked' : '';
 
     var whereHtml = item.where
       ? '<div class="card-where">Try at: ' + item.where + '</div>'
@@ -60,7 +62,8 @@
 
     var badgeHtml = opts.badgeHtml || (item.area ? '<span class="card-area">' + item.area + '</span>' : '');
 
-    return '<div class="card" data-card-id="' + cardId + '" style="animation-delay: ' + delay + 's">' +
+    return '<div class="card' + checkedClass + '" data-card-id="' + cardId + '" style="animation-delay: ' + delay + 's">' +
+      checkHtml +
       '<div class="card-accent" style="background: linear-gradient(90deg, ' + catColor + ', ' + catColor + '66)"></div>' +
       '<div class="card-body">' +
         '<div class="card-top">' +

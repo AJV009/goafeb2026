@@ -116,6 +116,41 @@
       return false;
     },
 
+    async saveChecked(checkedData, retries) {
+      if (!hasConfig()) return false;
+      retries = retries || 2;
+
+      for (var attempt = 0; attempt <= retries; attempt++) {
+        try {
+          var remote = await this.fetchLists(true);
+          remote.checked = checkedData;
+          remote.lastUpdated = new Date().toISOString();
+
+          var response = await fetch(baseUrl + '/' + CONFIG.JSONBIN_BIN_ID, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Access-Key': CONFIG.JSONBIN_API_KEY,
+            },
+            body: JSON.stringify(remote),
+          });
+
+          if (!response.ok) throw new Error('Failed to save checked');
+          this.updateCache(remote);
+          return true;
+        } catch (error) {
+          if (attempt === retries) {
+            console.error('API save checked error:', error);
+            return false;
+          }
+          await new Promise(function (r) {
+            setTimeout(r, 100 * (attempt + 1));
+          });
+        }
+      }
+      return false;
+    },
+
     async saveNotes(notesData, retries) {
       if (!hasConfig()) return false;
       retries = retries || 2;

@@ -71,6 +71,9 @@
     // Note buttons
     if (App.bindNoteEvents) App.bindNoteEvents(contentEl);
 
+    // Checklist buttons
+    if (App.bindChecklistEvents) App.bindChecklistEvents(contentEl);
+
     // Sort buttons
     contentEl.querySelectorAll('.sort-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

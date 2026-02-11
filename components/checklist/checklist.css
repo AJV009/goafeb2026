@@ -1,0 +1,44 @@
+/* Checklist button — top-left corner of card */
+.check-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: transparent;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.check-btn svg {
+  width: 10px;
+  height: 10px;
+}
+
+.check-btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-muted);
+}
+
+.check-btn.checked {
+  background: var(--jungle);
+  border-color: var(--jungle);
+  color: var(--white);
+}
+
+/* Dim checked cards but keep checkbox prominent */
+.card.card-checked {
+  opacity: 0.5;
+}
+
+.card.card-checked .check-btn {
+  opacity: 1;
+}

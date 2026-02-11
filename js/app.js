@@ -72,18 +72,22 @@
         App.state.lists = data.lists || {};
         App.state.votes = data.votes || {};
         App.state.notes = data.notes || {};
+        App.state.checked = data.checked || {};
         App.state.listsLoaded = true;
         App.state.votesLoaded = true;
         App.state.notesLoaded = true;
+        App.state.checkedLoaded = true;
         App.renderContent(); // Re-render with vote counts
       } catch (err) {
         console.error('Failed to load lists:', err);
         App.state.lists = {};
         App.state.votes = {};
         App.state.notes = {};
+        App.state.checked = {};
         App.state.listsLoaded = true;
         App.state.votesLoaded = true;
         App.state.notesLoaded = true;
+        App.state.checkedLoaded = true;
       }
       // Re-render sidebar to show "Wishlists" button now that API check passed
       App.renderSidebar();

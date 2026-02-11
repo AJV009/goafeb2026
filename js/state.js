@@ -37,6 +37,9 @@ window.GoaApp = (function () {
     // Notes feature
     notes: {},
     notesLoaded: false,
+    // Checklist feature
+    checked: {},
+    checkedLoaded: false,
     // Layout
     isMobileView: window.innerWidth <= 768,
   };
