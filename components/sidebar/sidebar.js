@@ -66,10 +66,19 @@
     var categories = Object.entries(GOA_DATA);
     var hasLists = App.API && App.API.hasConfig();
     var isListsView = App.state.viewMode === 'lists' || App.state.viewMode === 'listDetail';
+    var isSearchView = App.state.viewMode === 'search';
 
-    var btns = categories.map(function (entry) {
+    // Search button (always shown, before categories)
+    var searchActive = isSearchView ? ' active' : '';
+    var searchBtn = '<button class="sidebar-btn' + searchActive + '" data-cat="__search__" style="--cat-color:var(--jungle-light)">' +
+      '<span class="sidebar-icon">\uD83D\uDD0D</span>' +
+      '<span class="sidebar-label">Search</span>' +
+    '</button>' +
+    '<div class="sidebar-separator"></div>';
+
+    var btns = searchBtn + categories.map(function (entry) {
       var key = entry[0], cat = entry[1];
-      var active = !isListsView && App.state.activeCategory === key ? ' active' : '';
+      var active = !isListsView && !isSearchView && App.state.activeCategory === key ? ' active' : '';
       return '<button class="sidebar-btn' + active + '" data-cat="' + key + '" style="--cat-color:' + cat.color + '">' +
         '<span class="sidebar-icon">' + cat.icon + '</span>' +
         '<span class="sidebar-label">' + cat.title + '</span>' +
@@ -214,7 +223,7 @@
       if (!btn) return;
       var cat = btn.dataset.cat;
 
-      if (App.state.isMobileView && cat !== '__lists__') {
+      if (App.state.isMobileView && cat !== '__lists__' && cat !== '__search__') {
         closeMobileMenu();
         // If not in browse mode, switch back and re-render all categories first
         if (App.state.viewMode !== 'browse') {
@@ -228,6 +237,19 @@
         if (section) {
           section.scrollIntoView({ behavior: 'smooth' });
         }
+        return;
+      }
+
+      // Search view
+      if (cat === '__search__') {
+        if (App.state.isMobileView) closeMobileMenu();
+        App.state.viewMode = 'search';
+        App.state.searchQuery = '';
+        App.state.areaFilter = 'All';
+        App.state.sortBy = 'default';
+        App.state.expandedCard = null;
+        App.renderSidebar();
+        App.renderContent();
         return;
       }
 

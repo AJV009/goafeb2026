@@ -1,0 +1,7 @@
+/* GOA GUIDE — Global Search Styles */
+
+.search-results-info {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}

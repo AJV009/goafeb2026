@@ -30,3 +30,54 @@ transform everything into a json and store it away into jsonbin, add ability to 
 
 checklist option on the top left corner of every card, checking will dim the card, indicating that wee have already visited it OR its a no go. EVEN if its dim, all the icons and stuff on it should be working, in case someone wants to add more notes to it or wants to add it to some list and so on.
 data to be synced to jsonbin... the same way we are dealing with lists, votes and notes...
+
+---
+
+Next I need is a global search option, the icon and sidebar item for this will be after the top coconut tree BUT before the categories start. THis will be like a seperate page similar to wishlists page. On this page people can do fuzzy searching for ALL the categories and data from them together, it will and can be mixed into a single view, since we have colour coding for those cards it might be enough or easy to understand what categories they are without having to categorize inside a search. 
+
+
+---
+
+on mobile view, we have this accent line between the category title and the items count tag on the right end. I need that accent line to not be longer than 1/3rd of the current space. SO it would look like a fashionable underline instead of a full coloured underline...
+
+
+---
+
+need to do a visual upgrade to the UI a bit.
+So now when a certain category is active there is a yellow box on the category in the side bar. I wish to revamp the style/ looks of it.
+
+sidebar | main content
+|---|
+|   |
+| _ |
+|| ||
+| - |
+|   |
+|---|
+
+new style:
+sidebar | main content
+|---|
+|   |
+|   |
+|----
+|   
+|----
+|   |
+|---|
+
+Do you get what I mean? like instead of a box, the main content page is like going inside into the sidebar, and lets have the accent colour have a border to the complete bending left side. Which goes like this:
+
+
+   |
+   |
+   |
+   /
+---
+|
+---\
+    |
+    |
+    |
+
+you get it? try to make a better understanding of this. This kind of style can be seen in a lot of modern apps. I need you to prepare a proper plan with how you imagine this would look like. (applicable for mobile/desktop both expanded and collapsed views... for all)

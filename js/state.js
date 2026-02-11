@@ -23,7 +23,7 @@ window.GoaApp = (function () {
     searchQuery: '',
     expandedCard: null,
     // Lists feature
-    viewMode: 'browse', // 'browse' | 'lists' | 'listDetail'
+    viewMode: 'browse', // 'browse' | 'lists' | 'listDetail' | 'search'
     lists: {},
     activeListId: null,
     listsDirty: false,
