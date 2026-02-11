@@ -70,7 +70,7 @@
     var btns = categories.map(function (entry) {
       var key = entry[0], cat = entry[1];
       var active = !isListsView && App.state.activeCategory === key ? ' active' : '';
-      return '<button class="sidebar-btn' + active + '" data-cat="' + key + '">' +
+      return '<button class="sidebar-btn' + active + '" data-cat="' + key + '" style="--cat-color:' + cat.color + '">' +
         '<span class="sidebar-icon">' + cat.icon + '</span>' +
         '<span class="sidebar-label">' + cat.title + '</span>' +
       '</button>';
@@ -79,7 +79,7 @@
     if (hasLists) {
       var listsActive = isListsView ? ' active' : '';
       btns += '<div class="sidebar-separator"></div>';
-      btns += '<button class="sidebar-btn' + listsActive + '" data-cat="__lists__">' +
+      btns += '<button class="sidebar-btn' + listsActive + '" data-cat="__lists__" style="--cat-color:#D4943A">' +
         '<span class="sidebar-icon">\uD83D\uDCCB</span>' +
         '<span class="sidebar-label">Wishlists</span>' +
       '</button>';
