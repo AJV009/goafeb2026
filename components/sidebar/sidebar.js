@@ -119,6 +119,66 @@
     }
   };
 
+  // ── Swipe gesture for mobile sidebar ──
+
+  function initSwipeGesture() {
+    var startX = 0, startY = 0, tracking = false;
+
+    // Swipe right from left edge to open
+    document.addEventListener('touchstart', function (e) {
+      if (!App.state.isMobileView || mobileExpanded) return;
+      var touch = e.touches[0];
+      if (touch.clientX < 30) {
+        startX = touch.clientX;
+        startY = touch.clientY;
+        tracking = true;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+      if (!tracking) return;
+      var touch = e.touches[0];
+      var dx = touch.clientX - startX;
+      var dy = Math.abs(touch.clientY - startY);
+      if (dx > 60 && dx > dy * 1.5) {
+        tracking = false;
+        openMobileMenu();
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+      tracking = false;
+    }, { passive: true });
+
+    // Swipe left on sidebar to close
+    var sidebarEl = App.$('#sidebar');
+    if (!sidebarEl) return;
+    var sStartX = 0, sStartY = 0, sTracking = false;
+
+    sidebarEl.addEventListener('touchstart', function (e) {
+      if (!App.state.isMobileView || !mobileExpanded) return;
+      var touch = e.touches[0];
+      sStartX = touch.clientX;
+      sStartY = touch.clientY;
+      sTracking = true;
+    }, { passive: true });
+
+    sidebarEl.addEventListener('touchmove', function (e) {
+      if (!sTracking) return;
+      var touch = e.touches[0];
+      var dx = sStartX - touch.clientX;
+      var dy = Math.abs(touch.clientY - sStartY);
+      if (dx > 60 && dx > dy * 1.5) {
+        sTracking = false;
+        closeMobileMenu();
+      }
+    }, { passive: true });
+
+    sidebarEl.addEventListener('touchend', function () {
+      sTracking = false;
+    }, { passive: true });
+  }
+
   App.bindSidebarEvents = function () {
     var el = App.$('#sidebar');
     if (!el) return;
@@ -155,8 +215,15 @@
       var cat = btn.dataset.cat;
 
       if (App.state.isMobileView && cat !== '__lists__') {
-        // Mobile: close menu, then scroll to section
         closeMobileMenu();
+        // If not in browse mode, switch back and re-render all categories first
+        if (App.state.viewMode !== 'browse') {
+          App.state.viewMode = 'browse';
+          App.state.searchQuery = '';
+          App.state.expandedCard = null;
+          App.renderSidebar();
+          App.renderAllCategories();
+        }
         var section = document.querySelector('.category-section[data-category-key="' + cat + '"]');
         if (section) {
           section.scrollIntoView({ behavior: 'smooth' });
@@ -171,6 +238,20 @@
         App.state.activeListId = null;
         App.state.searchQuery = '';
         App.state.expandedCard = null;
+        // Render immediately, then fetch fresh data in background
+        App.renderSidebar();
+        App.renderContent();
+        if (App.API && App.API.hasConfig()) {
+          App.API.fetchLists(true).then(function (data) {
+            if (App.state.viewMode !== 'lists' && App.state.viewMode !== 'listDetail') return;
+            App.state.lists = data.lists || {};
+            App.state.votes = data.votes || {};
+            App.state.notes = data.notes || {};
+            App.state.checked = data.checked || {};
+            App.renderContent();
+          }).catch(function () {});
+        }
+        return;
       } else {
         App.state.viewMode = 'browse';
         App.state.activeCategory = cat;
@@ -185,6 +266,7 @@
 
     // Ensure backdrop exists
     ensureBackdrop();
+    initSwipeGesture();
   };
 
   // ── Scroll Spy (mobile continuous scroll) ──

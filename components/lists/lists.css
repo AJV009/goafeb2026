@@ -245,7 +245,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-lg);
-  z-index: 100;
+  z-index: 250;
   overflow: hidden;
   animation: fadeSlideIn 0.2s ease;
 }
@@ -286,5 +286,10 @@
 
   .list-detail-actions {
     flex-wrap: wrap;
+  }
+
+  .add-to-list-dropdown {
+    right: auto;
+    left: 0;
   }
 }
