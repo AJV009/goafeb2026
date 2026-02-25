@@ -106,6 +106,31 @@
   color: var(--text-light);
 }
 
+.cd-inflight {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--jungle);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.duration-live {
+  color: var(--jungle);
+  font-weight: 700;
+}
+
+/* ── Completed flight grey-out ── */
+
+.flight-completed {
+  opacity: 0.55;
+  filter: grayscale(40%);
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
 /* ── Route visualization ── */
 
 .flight-route {
@@ -170,7 +195,7 @@
   position: relative;
   height: 2px;
   background: var(--border);
-  margin: 0 auto;
+  width: 100%;
 }
 
 .flight-line::before,
@@ -194,8 +219,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 18px;
-  background: var(--sand);
+  background: transparent;
   padding: 0 6px;
+  z-index: 1;
 }
 
 .flight-stops {
