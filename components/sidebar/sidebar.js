@@ -67,6 +67,7 @@
     var hasLists = App.API && App.API.hasConfig();
     var isListsView = App.state.viewMode === 'lists' || App.state.viewMode === 'listDetail';
     var isSearchView = App.state.viewMode === 'search';
+    var isFlightsView = App.state.viewMode === 'flights';
 
     // Search button (always shown, before categories)
     var searchActive = isSearchView ? ' active' : '';
@@ -78,7 +79,7 @@
 
     var btns = searchBtn + categories.map(function (entry) {
       var key = entry[0], cat = entry[1];
-      var active = !isListsView && !isSearchView && App.state.activeCategory === key ? ' active' : '';
+      var active = !isListsView && !isSearchView && !isFlightsView && App.state.activeCategory === key ? ' active' : '';
       return '<button class="sidebar-btn' + active + '" data-cat="' + key + '" style="--cat-color:' + cat.color + '">' +
         '<span class="sidebar-icon">' + cat.icon + '</span>' +
         '<span class="sidebar-label">' + cat.title + '</span>' +
@@ -93,6 +94,13 @@
         '<span class="sidebar-label">Wishlists</span>' +
       '</button>';
     }
+
+    // Flights button (always shown, after wishlists)
+    var flightsActive = isFlightsView ? ' active' : '';
+    btns += '<button class="sidebar-btn' + flightsActive + '" data-cat="__flights__" style="--cat-color:#4A90D9">' +
+      '<span class="sidebar-icon">\u2708\uFE0F</span>' +
+      '<span class="sidebar-label">Flights</span>' +
+    '</button>';
 
     // External links
     btns += '<div class="sidebar-separator"></div>';
@@ -222,6 +230,17 @@
       var btn = e.target.closest('.sidebar-btn');
       if (!btn) return;
       var cat = btn.dataset.cat;
+
+      // Flights view
+      if (cat === '__flights__') {
+        if (App.state.isMobileView) closeMobileMenu();
+        App.state.viewMode = 'flights';
+        App.state.searchQuery = '';
+        App.state.expandedCard = null;
+        App.renderSidebar();
+        App.renderContent();
+        return;
+      }
 
       if (App.state.isMobileView && cat !== '__lists__' && cat !== '__search__') {
         closeMobileMenu();

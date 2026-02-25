@@ -40,6 +40,8 @@ var PRECACHE_URLS = [
   './components/lists/list-actions.js',
   './components/custom-cards/custom-cards.css',
   './components/custom-cards/custom-cards.js',
+  './components/flights/flights.css',
+  './components/flights/flights.js',
   './components/footer/footer.css',
   './components/footer/footer.js',
   './components/pwa/pwa.js',

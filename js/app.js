@@ -12,6 +12,7 @@
     if (App.state.viewMode === 'search') { App.renderSearchView(); return; }
     if (App.state.viewMode === 'lists') { App.renderListsOverview(); return; }
     if (App.state.viewMode === 'listDetail') { App.renderListDetail(); return; }
+    if (App.state.viewMode === 'flights') { App.renderFlights(); return; }
 
     // Mobile browse: render all categories as continuous scroll
     if (App.state.isMobileView) {
