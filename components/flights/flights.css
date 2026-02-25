@@ -64,7 +64,7 @@
   justify-content: center;
   gap: 2px;
   padding: 18px 20px 10px;
-  font-family: var(--font-display);
+  font-family: 'Courier New', Courier, monospace;
   font-variant-numeric: tabular-nums;
 }
 
