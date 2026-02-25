@@ -56,6 +56,56 @@
   color: #27ae60;
 }
 
+/* ── Countdown ── */
+
+.flight-countdown {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  padding: 18px 20px 10px;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.cd-segment {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+.cd-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--jungle);
+  letter-spacing: -0.5px;
+}
+
+.cd-unit {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.cd-sep {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--border);
+  margin: 0 3px;
+}
+
+.cd-ms .cd-value {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.cd-departed {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
 /* ── Route visualization ── */
 
 .flight-route {
@@ -210,5 +260,27 @@
 
   .flight-code {
     font-size: 14px;
+  }
+
+  .flight-countdown {
+    padding: 14px 10px 8px;
+    gap: 1px;
+  }
+
+  .cd-value {
+    font-size: 20px;
+  }
+
+  .cd-ms .cd-value {
+    font-size: 15px;
+  }
+
+  .cd-sep {
+    font-size: 16px;
+    margin: 0 1px;
+  }
+
+  .cd-unit {
+    font-size: 9px;
   }
 }

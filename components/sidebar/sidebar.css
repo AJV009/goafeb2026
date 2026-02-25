@@ -94,9 +94,14 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: clip;
-  padding: 8px;
+  padding: 8px 0 8px 8px;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  direction: rtl;
+}
+
+.sidebar-nav > * {
+  direction: ltr;
 }
 
 .sidebar-nav::-webkit-scrollbar {
